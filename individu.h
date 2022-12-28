@@ -27,5 +27,4 @@ typedef struct _bits{
  */
 typedef Bits* Individu;
 
-
 #endif // INDIVIDU_H

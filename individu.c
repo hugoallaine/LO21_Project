@@ -4,20 +4,12 @@
 
 #include "individu.h"
 
-/*
-Write the algorithm and the C subroutine corresponding to the following operations:
-• Randomly initialize the list of bits (give an iterative version and a recursive version of this operation).
-• Decode the list of bits and give the corresponding integer value.
-• Cross two lists of bits, ie invert the elements of the two lists according to a given probability
-(pCross) for each position in the list (random draw and comparison with the probability).
-*/
-
 // Randomly initialize the list of bits (iterative version)
 Individu initRandomIter() {
     Individu individu = (Individu) malloc(sizeof(Individu));                    // Creation of the first element of the list
     individu->value = rand() % 2;                                               // Give a random value to the first element
     Individu *temp = individu;                                                  // Create a temporary pointer to the first element
-    for (int i = 0; i < longIndiv; i++) {                                       // Loop to create the rest of the list
+    for (int i = 1; i < longIndiv; i++) {                                       // Loop to create the rest of the list
         Individu nouvelIndividu = (Individu) malloc(sizeof(Individu));          // Creation of the new element
         nouvelIndividu->value = rand() % 2;                                     // Give a random value to the new element
         nouvelIndividu->next = NULL;                                            // Set the next element to NULL
@@ -28,8 +20,10 @@ Individu initRandomIter() {
 }
 
 // Randomly initialize the list of bits (recursive version)
-Individu initRandomRec(Individu individu) {
-    int i = 0;                                                                  // Create a counter
+Individu initRandomRec() {
+    Individu individu = (Individu) malloc(sizeof(Individu));                    // Create the first element of the list
+    individu->value = rand() % 2;                                               // Give a random value to the first element
+    int i = 1;                                                                  // Create a counter
     return initRandomRecIn(individu, i);                                        // Call the function with the first element
 }
 
@@ -75,11 +69,11 @@ void crossTwoLists(Individu individu1, Individu individu2) {
 
 // Calculate the quality of an individual from its value
 float quality(int value) {
-    float square = 2;
-    for (int i = 0; i < longIndiv; i++) {
-        square += square;
+    float pow = 2;                                                              // Create a variable to store the power of 2
+    for (int i = 0; i < longIndiv; i++) {                                       // Loop to calculate power based on longIndiv of 2
+        pow += pow;
     }
-    float X = (value/square)*(B-A)+A;
-    float quality = -(X*X);
-    return quality;
+    float X = ((float)value/pow)*(B-A)+A;                                       // Calculate the value of X
+    float quality = -(X*X);                                                     // Calculate the quality
+    return quality;                                                             // Return the quality
 }

@@ -2,9 +2,6 @@
 // Author: Hugo Allainé - Léo Angonnet
 // individu.c
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
 #include "individu.h"
 
 /*
@@ -62,7 +59,7 @@ int convertIndivToInt(Individu individu) {
 }
 
 // Cross two lists of bits (i.e invert the elements of the two lists according to a given probability)
-void crossTwoLists(Individu individu1, Individu individu2, float pCross) {
+void crossTwoLists(Individu individu1, Individu individu2) {
     Individu *temp1 = individu1;                                                // Create a temporary pointer to the first list
     Individu *temp2 = individu2;                                                // Create a temporary pointer to the second list
     while (temp1 != NULL && temp2 != NULL) {                                    // Loop to go through the lists

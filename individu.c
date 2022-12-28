@@ -62,25 +62,27 @@ int convertIndivToInt(Individu individu) {
 }
 
 // Cross two lists of bits (i.e invert the elements of the two lists according to a given probability)
-Individu crossTwoLists(Individu individu1, Individu individu2, float pCross) {
-    Individu individu = (Individu) malloc(sizeof(Individu));                    // Create the first element of the new list
-    individu->value = individu1->value;                                         // Give the value of the first element of the first list to the first element of the new list
-    Individu *temp = individu;                                                  // Create a temporary pointer to the first element of the new list
-    individu1 = individu1->next;                                                // Go to the next element of the first list
-    individu2 = individu2->next;                                                // Go to the next element of the second list
-    while (individu1 != NULL) {                                                 // Loop to go through the list
-        Individu nouvelIndividu = (Individu) malloc(sizeof(Individu));          // Create the new element
+void crossTwoLists(Individu individu1, Individu individu2, float pCross) {
+    Individu *temp1 = individu1;                                                // Create a temporary pointer to the first list
+    Individu *temp2 = individu2;                                                // Create a temporary pointer to the second list
+    while (temp1 != NULL && temp2 != NULL) {                                    // Loop to go through the lists
         if (rand() % 100 < pCross * 100) {                                      // Check if the random value is lower than the probability
-            nouvelIndividu->value = individu2->value;                           // Give the value of the second list to the new element
+            int temp = temp1->value;                                            // Create a temporary variable to store the value of the first element
+            temp1->value = temp2->value;                                        // Set the value of the first element to the value of the second element
+            temp2->value = temp;                                                // Set the value of the second element to the value of the first element
         }
-        else {                                                                  // If the random value is higher than the probability
-            nouvelIndividu->value = individu1->value;                           // Give the value of the first list to the new element
-        }
-        nouvelIndividu->next = NULL;                                            // Set the next element to NULL
-        temp->next = nouvelIndividu;                                            // Set the next element of the previous element to the new element
-        temp = temp->next;                                                      // Set the temporary pointer to the new element
-        individu1 = individu1->next;                                            // Go to the next element of the first list
-        individu2 = individu2->next;                                            // Go to the next element of the second list
+        temp1 = temp1->next;                                                    // Go to the next element of the first list
+        temp2 = temp2->next;                                                    // Go to the next element of the second list
     }
-    return individu;                                                            // Return the new list
+}
+
+// Calculate the quality of an individual from its value
+float quality(int value) {
+    float square = 2;
+    for (int i = 0; i < longIndiv; i++) {
+        square += square;
+    }
+    float X = (value/square)*(B-A)+A;
+    float quality = -(X*X);
+    return quality;
 }

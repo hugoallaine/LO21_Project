@@ -2,11 +2,23 @@
 // Author: Hugo Allainé - Léo Angonnet
 // main.c
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "population.h"
+#include "individu.h"
 
 int main(int argc, char *argv[])
 {
+    srand(time(0));
+    int taillePop = rand() % 181 + 20;      // 20 <= taillePop <= 200
+    int tselect = rand() % 81 + 10;         // 10 <= tselect <= 90
+    int nGen = rand() % 181 + 20;           // 20 <= nGen <= 200
 
+    Population population = initPopulation(taillePop);
+    for(int i = 0; i < nGen; i++) {                             // Loop for nGen generations
+        population = crossPop(population, taillePop);           // Cross the population
+        population = sortPopByQuality(population);              // Sort the population by quality
+        population = selectBest(population, tselect);           // Select the best individuals
+    }
+
+    printf("The best individual have %d of value and %d of quality", convertIndivToInt(population->individu), population->quality);
     return 0;
 }

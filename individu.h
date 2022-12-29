@@ -16,7 +16,7 @@
 
 typedef unsigned char Bit;
 
-/* Liste de bits
+/* Bits list
  */
 typedef struct _bits{
     Bit value;
@@ -26,5 +26,12 @@ typedef struct _bits{
 /* Individu
  */
 typedef Bits* Individu;
+
+// Function prototypes
+Individu initRandomIter();
+Individu initRandomRec();
+int convertIndivToInt(Individu individu);
+void crossTwoLists(Individu individu1, Individu individu2);
+float quality(int value);
 
 #endif // INDIVIDU_H

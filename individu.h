@@ -35,6 +35,6 @@ Individu initRandomIter();
 Individu initRandomRec();
 int convertIndivToInt(Individu individu);
 void crossTwoLists(Individu individu1, Individu individu2);
-float quality(int value);
+float calc_quality(int value);
 
 #endif // INDIVIDU_H

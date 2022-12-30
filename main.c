@@ -27,7 +27,7 @@ int main()
 
     printf("Analysis done\n");
 
-    printf("The best individual have %d of value and %f of quality\n", convertIndivToInt(population->individu), quality(convertIndivToInt(population->individu)));
+    printf("The best individual have %d of value and %f of quality\n", convertIndivToInt(population->individu), calc_quality(convertIndivToInt(population->individu)));
     deletePop(population);                                  // Delete the rest of the population
 
     return 0;

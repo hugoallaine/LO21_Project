@@ -19,9 +19,11 @@ typedef struct _liste_individu {
 typedef Liste_Individu* Population;
 
 // Function prototypes
+void printQuality(Population population);
 Population initPopulation(int longPop);
 Population sortPopByQuality(Population population);
 Population selectBest(Population population, int tselect);
-Population crossPop(Population P1, int taillePop);
+void crossPop(Population P1, int taillePop);
+void deletePop(Population population);
 
 #endif // POPULATION_H

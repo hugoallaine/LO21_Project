@@ -5,20 +5,33 @@
 #include "population.h"
 #include "individu.h"
 
-int main(int argc, char *argv[])
+int main()
 {
     srand(time(0));
     int taillePop = rand() % 181 + 20;      // 20 <= taillePop <= 200
     int tselect = rand() % 81 + 10;         // 10 <= tselect <= 90
     int nGen = rand() % 181 + 20;           // 20 <= nGen <= 200
 
+    printf("Taille de la population: %d\n", taillePop);
+    printf("tselect: %d\n", tselect);
+    printf("nGen: %d\n", nGen);
+
+    printf("Starting analysis...\n");
+
     Population population = initPopulation(taillePop);
-    for(int i = 0; i < nGen; i++) {                             // Loop for nGen generations
-        population = crossPop(population, taillePop);           // Cross the population
-        population = sortPopByQuality(population);              // Sort the population by quality
-        population = selectBest(population, tselect);           // Select the best individuals
+    for(int i = 0; i < nGen; i++) {                         // Loop for nGen generations
+        printQuality(population);
+        crossPop(population, taillePop);                    // Cross the population
+        population = sortPopByQuality(population);          // Sort the population by quality
+        population = selectBest(population, tselect);       // Select the best individuals
+        printf("%d,%f\n",convertIndivToInt(population->individu),population->quality);
+        printf("\n\n");
     }
 
-    printf("The best individual have %d of value and %d of quality", convertIndivToInt(population->individu), population->quality);
+    printf("Analysis done\n");
+
+    printf("The best individual have %d of value and %f of quality\n", convertIndivToInt(population->individu), quality(convertIndivToInt(population->individu)));
+    deletePop(population);                                  // Delete the rest of the population
+
     return 0;
 }

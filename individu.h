@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <math.h>
 
 #define longIndiv 8
 #define A -1
@@ -28,6 +29,7 @@ typedef struct _bits{
 typedef Bits* Individu;
 
 // Function prototypes
+void printIndiv(Individu individu);
 Individu initRandomIter();
 Individu initRandomRec();
 int convertIndivToInt(Individu individu);

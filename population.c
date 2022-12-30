@@ -97,8 +97,8 @@ Population sortPopByQuality(Population population) {
     if (population == NULL || population->next == NULL) {                           // If the list is empty or has only one element
         return population;
     }
-    Population start = population;                                                 // Create a temporary pointer to the first element
-    Population end = population;                                                   // Create a temporary pointer to the last element
+    Population start = population;                                                  // Create a temporary pointer to the first element
+    Population end = population;                                                    // Create a temporary pointer to the last element
     while (end->next != NULL) {                                                     // Loop to find the last element
         end = end->next;
     }
@@ -111,7 +111,7 @@ Population sortPopByQuality(Population population) {
 Population selectBest(Population population, int tselect) {
     Population temp1 = population;                                                  // Create a temporary pointer to the first element
     Population temp2 = population;                                                  // Create a second temporary pointer to the first element
-    for (int i = 0; i < tselect; i++) {                                            // Loop to skip the tselect elements
+    for (int i = 0; i < tselect; i++) {                                             // Loop to skip the tselect elements
         if (temp2->next == NULL) {                                                  // If we are at the end of the list
             return population;
         }
@@ -145,8 +145,8 @@ void crossPop(Population P1, int taillePop) {
             temp2 = temp2->next;
         }
         crossTwoLists(temp1->individu, temp2->individu);                        // Cross the two Individu
-        temp1->quality = calc_quality(convertIndivToInt(temp1->individu));           // Get the quality of the new Individu1
-        temp2->quality = calc_quality(convertIndivToInt(temp2->individu));           // Get the quality of the new Individu2       
+        temp1->quality = calc_quality(convertIndivToInt(temp1->individu));      // Get the quality of the new Individu1
+        temp2->quality = calc_quality(convertIndivToInt(temp2->individu));      // Get the quality of the new Individu2       
         temp1 = P1;                                                             // Reset the temporary pointers                                      
         temp2 = P1;                                 
     }

@@ -4,6 +4,7 @@
 
 #include "individu.h"
 
+// Print the list of bits
 void printIndiv(Individu individu) {
     Individu temp = individu;
     while (temp != NULL) {
@@ -56,7 +57,7 @@ int convertIndivToInt(Individu individu) {
     int i = longIndiv;                                                          // Create a counter starting at the length of the list
     while (individu != NULL) {                                                  // Loop to go through the list
         i--;                                                                    // Decrease the counter
-        value += individu->value*(int)pow(2,i);                                 // Add the value of the current element to the value
+        value += individu->value*(int)pow(2,i);                                 // Add the value of the current element to the total value
         individu = individu->next;                                              // Go to the next element
     }
     return value;                                                               // Return the value
@@ -77,8 +78,8 @@ void crossTwoLists(Individu individu1, Individu individu2) {
     }
 }
 
-#ifndef useF2
 // Calculate the quality of an individual from its value
+#ifndef useF2
 float calc_quality(int value) {
     float X = (((float)value)/(powf(2,longIndiv)))*(B-A)+A;                     // Calculate the value of X
     float quality = -(X*X);                                                     // Calculate the quality

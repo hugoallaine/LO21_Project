@@ -10,10 +10,11 @@
 #include <time.h>
 #include <math.h>
 
-#define longIndiv 8
-#define A -1
-#define B 1
+#define longIndiv 16     // 8 ou 16 selon le mode
+#define A 0.1            // -1 ou 0.1 selon le mode
+#define B 5             // 1 ou 5 selon le mode
 #define pCross 0.5
+#define useF2 1         // Commenter pour utiliser f1
 
 typedef unsigned char Bit;
 

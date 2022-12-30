@@ -77,9 +77,17 @@ void crossTwoLists(Individu individu1, Individu individu2) {
     }
 }
 
+#ifndef useF2
 // Calculate the quality of an individual from its value
 float quality(int value) {
     float X = (((float)value)/(powf(2,longIndiv)))*(B-A)+A;                     // Calculate the value of X
     float quality = -(X*X);                                                     // Calculate the quality
     return quality;                                                             // Return the quality
 }
+#else
+float quality(int value) {
+    float X = (((float)value)/(powf(2,longIndiv)))*(B-A)+A;                     // Calculate the value of X
+    float quality = -(logf(X));                                                 // Calculate the quality
+    return quality;                                                             // Return the quality
+}
+#endif

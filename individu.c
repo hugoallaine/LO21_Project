@@ -10,6 +10,7 @@ void printIndiv(Individu individu) {
         printf("%d", temp->value);
         temp = temp->next;
     }
+    printf("\n");
 }
 
 // Randomly initialize the list of bits (iterative version)

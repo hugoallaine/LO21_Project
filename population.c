@@ -7,65 +7,40 @@
 void printQuality(Population population) {
     Population temp = population;
     while (temp != NULL) {
-        printf("%f,%f\n", quality(convertIndivToInt(temp->individu)),temp->quality);
+        printf("%f,%f\n", calc_quality(convertIndivToInt(temp->individu)),temp->quality);
         temp = temp->next;
     }
+}
+
+void printPop(Population population) {
+    Population temp = population;
+    while (temp != NULL) {
+        printIndiv(temp->individu);
+        printf("Value: %d\n", convertIndivToInt(temp->individu));
+        printf("Quality: %f\n", temp->quality);
+        temp = temp->next;
+    }
+    printf("Fin PrintPop\n");
 }
 
 // Initialize the population with random individuals
 Population initPopulation(int taillePop) {
     Population population = (Population) malloc(sizeof(Liste_Individu));                    // Create the first element of the list
-    population->individu = initRandomIter();                                            // Create a random Individu to the first element
-    population->quality = quality(convertIndivToInt(population->individu));             // Set the quality of the first element
-    population->prev = NULL;                                                            // Set the previous element to NULL
-    Population temp = population;                                                       // Create a temporary pointer to the first element
-    for (int i = 1; i < taillePop; i++) {                                               // Loop to create the rest of the list
+    population->individu = initRandomIter();                                                // Create a random Individu to the first element
+    population->quality = calc_quality(convertIndivToInt(population->individu));            // Set the quality of the first element
+    population->prev = NULL;                                                                // Set the previous element to NULL
+    Population temp = population;                                                           // Create a temporary pointer to the first element
+    for (int i = 1; i < taillePop; i++) {                                                   // Loop to create the rest of the list
         Population newPopulation = (Population) malloc(sizeof(Liste_Individu));             // Create the new element
-        newPopulation->individu = initRandomIter();                                     // Create a random Individu to the new element
-        newPopulation->quality = quality(convertIndivToInt(newPopulation->individu));   // Set the quality of the new element
-        newPopulation->next = NULL;                                                     // Set the next element to NULL                                                      
-        newPopulation->prev = temp;                                                     // Set the previous element to the previous element
-        temp->next = newPopulation;                                                     // Set the next element of the previous element to the new element
-        temp = temp->next;                                                              // Set the temporary pointer to the new element
+        newPopulation->individu = initRandomIter();                                         // Create a random Individu to the new element
+        newPopulation->quality = calc_quality(convertIndivToInt(newPopulation->individu));  // Set the quality of the new element
+        newPopulation->next = NULL;                                                         // Set the next element to NULL                                                      
+        newPopulation->prev = temp;                                                         // Set the previous element to the previous element
+        temp->next = newPopulation;                                                         // Set the next element of the previous element to the new element
+        temp = temp->next;                                                                  // Set the temporary pointer to the new element
     }
     return population;
 }
-
-/*
-void swap(Population a, Population b) {
-    Population tmp = a;
-    a->next = b->next;
-    a->prev = b;
-    b->prev = tmp->prev;
-    b->next = tmp;
-}
-
-void quickSort(Population start, Population end) {
-    printf("[quickSort]\n");
-    Population tmp_swap, i, j;
-    if(start->quality > end->quality) {
-        tmp_swap = start;
-        i = start;
-        j = end;
-        int p = 0;
-        while (i->quality > j->quality) {
-            while(i->quality <= tmp_swap->quality && i->quality < end->quality)
-                i = i->next;
-            while(j->quality > tmp_swap->quality)
-                j = j->prev;
-            if(i->quality > j->quality) {
-                swap(i, j);
-            }
-            p += 1;
-        }
-        swap(tmp_swap, j);
-        quickSort(start, j->prev);
-        quickSort(j->next, end);
-    }
-    
-    printf("oui");
-}
-*/
 
 /* A utility function to swap two elements */
 void swap(Population a, Population b) {
@@ -122,8 +97,8 @@ Population sortPopByQuality(Population population) {
     if (population == NULL || population->next == NULL) {                           // If the list is empty or has only one element
         return population;
     }
-    Population start = population;                                                 // Create a temporary pointer to the first element
-    Population end = population;                                                   // Create a temporary pointer to the last element
+    Population start = population;                                                  // Create a temporary pointer to the first element
+    Population end = population;                                                    // Create a temporary pointer to the last element
     while (end->next != NULL) {                                                     // Loop to find the last element
         end = end->next;
     }
@@ -136,7 +111,7 @@ Population sortPopByQuality(Population population) {
 Population selectBest(Population population, int tselect) {
     Population temp1 = population;                                                  // Create a temporary pointer to the first element
     Population temp2 = population;                                                  // Create a second temporary pointer to the first element
-    for (int i = 0; i <= tselect; i++) {                                            // Loop to skip the tselect elements
+    for (int i = 0; i < tselect; i++) {                                             // Loop to skip the tselect elements
         if (temp2->next == NULL) {                                                  // If we are at the end of the list
             return population;
         }
@@ -156,7 +131,6 @@ Population selectBest(Population population, int tselect) {
 void crossPop(Population P1, int taillePop) {
     Population temp1 = P1;                                                      // Create a temporary pointer to the first element
     Population temp2 = P1;                                                      // Create a second temporary pointer to the first element
-    //Population P2 = (Population) malloc(sizeof(Liste_Individu));                // Create a new Population
     int rand1;                                                                  // Create a random variable               
     int rand2;                                                                  // Create a second random variable
     for (int i = 0; i < taillePop; i++) {                                       // Loop to create the new Population with same size as the first one
@@ -171,9 +145,8 @@ void crossPop(Population P1, int taillePop) {
             temp2 = temp2->next;
         }
         crossTwoLists(temp1->individu, temp2->individu);                        // Cross the two Individu
-
-        temp1->quality = quality(convertIndivToInt(temp1->individu));           // Get the quality of the new Individu1
-        temp2->quality = quality(convertIndivToInt(temp2->individu));           // Get the quality of the new Individu2       
+        temp1->quality = calc_quality(convertIndivToInt(temp1->individu));      // Get the quality of the new Individu1
+        temp2->quality = calc_quality(convertIndivToInt(temp2->individu));      // Get the quality of the new Individu2       
         temp1 = P1;                                                             // Reset the temporary pointers                                      
         temp2 = P1;                                 
     }

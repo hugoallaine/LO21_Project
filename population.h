@@ -20,6 +20,7 @@ typedef Liste_Individu* Population;
 
 // Function prototypes
 void printQuality(Population population);
+void printPop(Population population);
 Population initPopulation(int longPop);
 Population sortPopByQuality(Population population);
 Population selectBest(Population population, int tselect);

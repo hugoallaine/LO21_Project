@@ -20,17 +20,14 @@ int main()
 
     Population population = initPopulation(taillePop);
     for(int i = 0; i < nGen; i++) {                         // Loop for nGen generations
-        printQuality(population);
         crossPop(population, taillePop);                    // Cross the population
         population = sortPopByQuality(population);          // Sort the population by quality
         population = selectBest(population, tselect);       // Select the best individuals
-        printf("%d,%f\n",convertIndivToInt(population->individu),population->quality);
-        printf("\n\n");
     }
 
     printf("Analysis done\n");
 
-    printf("The best individual have %d of value and %f of quality\n", convertIndivToInt(population->individu), quality(convertIndivToInt(population->individu)));
+    printf("The best individual have %d of value and %f of quality\n", convertIndivToInt(population->individu), calc_quality(convertIndivToInt(population->individu)));
     deletePop(population);                                  // Delete the rest of the population
 
     return 0;

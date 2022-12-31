@@ -9,7 +9,8 @@ int main()
 {
     srand(time(0));
     int taillePop = rand() % 181 + 20;                      // 20 <= taillePop <= 200
-    int tselect = rand() % 81 + 10;                         // 10 <= tselect <= 90
+    int tselect = rand() % 81 + 10;                         // 10% <= tselect <= 90% de taillePop
+    tselect = (taillePop * tselect / 100.0);
     int nGen = rand() % 181 + 20;                           // 20 <= nGen <= 200
 
     printf("Taille de la population: %d\n", taillePop);

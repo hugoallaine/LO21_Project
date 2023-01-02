@@ -1,0 +1,127 @@
+# Jeu d'essai de la fonction 1
+# Toutes les valeurs de ce jeu ont été utilisées pour construire le graphique correspondant dans la partie "résultat" du rapport
+# Série de 20 exécutions
+
+PS > gcc *.c -o main -lm
+PS > .\main.exe
+Taille de la population: 191
+tselect: 154
+Starting analysis...
+Analysis done
+The best individual have 218 of value and -0.494385 of quality
+PS > .\main.exe
+Taille de la population: 39
+tselect: 20
+Starting analysis...
+Analysis done
+The best individual have 125 of value and -0.000549 of quality
+PS > .\main.exe
+Taille de la population: 49
+tselect: 7
+Starting analysis...
+Analysis done
+The best individual have 135 of value and -0.002991 of quality
+PS > .\main.exe
+Taille de la population: 52
+tselect: 37
+Starting analysis...
+Analysis done
+The best individual have 121 of value and -0.002991 of quality
+PS > .\main.exe
+Taille de la population: 62
+tselect: 21
+Starting analysis...
+Analysis done
+The best individual have 98 of value and -0.054932 of quality
+PS > .\main.exe
+Taille de la population: 117
+tselect: 95
+Starting analysis...
+Analysis done
+The best individual have 125 of value and -0.000549 of quality
+PS > .\main.exe
+Taille de la population: 121
+tselect: 68
+Starting analysis...
+Analysis done
+The best individual have 118 of value and -0.006104 of quality
+PS > .\main.exe
+Taille de la population: 124
+tselect: 40
+Starting analysis...
+Analysis done
+The best individual have 30 of value and -0.586182 of quality
+PS > .\main.exe
+Taille de la population: 124
+tselect: 40
+Starting analysis...
+Analysis done
+The best individual have 30 of value and -0.586182 of quality
+PS > .\main.exe
+Taille de la population: 127
+tselect: 57
+Starting analysis...
+Analysis done
+The best individual have 143 of value and -0.013733 of quality
+PS > .\main.exe
+Taille de la population: 130
+tselect: 26
+Starting analysis...
+Analysis done
+The best individual have 159 of value and -0.058655 of quality
+PS > .\main.exe
+Taille de la population: 130
+tselect: 26
+Starting analysis...
+Analysis done
+The best individual have 159 of value and -0.058655 of quality
+PS > .\main.exe
+Taille de la population: 134
+tselect: 103
+Starting analysis...
+Analysis done
+The best individual have 121 of value and -0.002991 of quality
+PS > .\main.exe
+Taille de la population: 137
+tselect: 121
+Starting analysis...
+Analysis done
+The best individual have 127 of value and -0.000061 of quality
+PS > .\main.exe
+Taille de la population: 137
+tselect: 121
+Starting analysis...
+Analysis done
+The best individual have 127 of value and -0.000061 of quality
+PS > .\main.exe
+Taille de la population: 140
+tselect: 91
+Starting analysis...
+Analysis done
+The best individual have 127 of value and -0.000061 of quality
+PS > .\main.exe
+Taille de la population: 144
+tselect: 57
+Starting analysis...
+Analysis done
+The best individual have 92 of value and -0.079102 of quality
+PS > .\main.exe
+Taille de la population: 144
+tselect: 57
+Starting analysis...
+Analysis done
+The best individual have 92 of value and -0.079102 of quality
+PS > .\main.exe
+Taille de la population: 147
+tselect: 76
+nGen: 179
+Starting analysis...
+Analysis done
+The best individual have 119 of value and -0.004944 of quality
+PS > .\main.exe
+Taille de la population: 150
+tselect: 42
+nGen: 125
+Starting analysis...
+Analysis done
+The best individual have 249 of value and -0.893616 of quality

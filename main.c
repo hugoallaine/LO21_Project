@@ -13,6 +13,9 @@ int main()
     tselect = (taillePop * tselect / 100.0);
     int nGen = rand() % 181 + 20;                           // 20 <= nGen <= 200
 
+    //int taillePop = 10;
+    //int tselect = 7;
+
     printf("Taille de la population: %d\n", taillePop);
     printf("tselect: %d\n", tselect);
     printf("nGen: %d\n", nGen);
@@ -21,9 +24,16 @@ int main()
 
     Population population = initPopulation(taillePop);
     for(int i = 0; i < nGen; i++) {                         // Loop for nGen generations
+        //printPop(population);
         crossPop(population, taillePop);                    // Cross the population
+        //printPop(population);
         population = sortPopByQuality(population);          // Sort the population by quality
+        //printPop(population);
         population = selectBest(population, tselect);       // Select the best individuals
+        //printPop(population);
+        //if(i == 0){
+        //    exit(0);
+        //}
     }
 
     printf("Analysis done\n");

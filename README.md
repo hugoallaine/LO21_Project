@@ -1,4 +1,4 @@
-# LO21_project
+# LO21 Project
 
 Population analysis | LO21 Project in second year at UTBM.   
 
